@@ -1,26 +1,21 @@
-const express = require('express')
-const mongoose = require('mongoose')
-const cors = require('cors')
-const requireDir = require('require-dir')
+const express = require('express');
+const cors = require('cors');
+const requireDir = require('require-dir');
+require('dotenv').config();
+
+const PORT = process.env.PORT;
 
 //iniciando o App
-const app = express()
-app.use(express.json())
-app.use(cors())
-//iniciando o db
-mongoose.connect(
-    'mongodb://localhost:27017/nodeapi',
-    {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false}
-    )
+const app = express();
+app.use(express.json());
+app.use(cors());
 
 //models
-requireDir('./models/')
+requireDir('./models/');
 
 //Rotas
-app.use('/api', require('./routes'))
+app.use('/', require('./routes'));
 
-
-
-
-console.log("server rodando na porta 3001!")
-app.listen(3001)
+app.listen(PORT, () =>{
+    console.log("app listening at port "+PORT);
+})

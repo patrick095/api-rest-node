@@ -17,5 +17,5 @@ requireDir('./models/');
 app.use('/', require('./routes'));
 
 app.listen(PORT, () =>{
-    console.log("app listening at port "+PORT);
+    console.log("app listening at port :"+PORT);
 })

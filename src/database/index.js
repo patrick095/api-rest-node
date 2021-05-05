@@ -18,7 +18,7 @@ const options = {
 const url = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOSTNAME}:${MONGO_PORT}/${MONGO_DB}?authSource=admin`;
 
 //iniciando o db
-mongoose.connect(url, options).then(()=>{
+mongoose.connect(MONGODB_URL, options).then(()=>{
         console.log('successfully connected to database');
     }).catch(err =>{
         console.log(err)

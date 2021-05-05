@@ -9,6 +9,10 @@ module.exports = {
             //ao entrar vai receber todas as mensagens que já estão salvas
             socket.emit('wellcome', dbMsgs);
 
+            socket.on('update', ()=>{
+                socket.emit('wellcome', dbMsgs);
+            })
+
             socket.on('sendMsg',async msg =>{
                 const olderMsgs = await Chat.findOne();
                 let filter = olderMsgs._id

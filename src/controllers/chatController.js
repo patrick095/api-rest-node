@@ -5,7 +5,7 @@ module.exports = {
     async io(io){
         io.on('connection', async socket =>{
             console.log(socket.id);
-            const dbMsgs = await Chat.find();
+            const dbMsgs = await Chat.findOne();
             //ao entrar vai receber todas as mensagens que já estão salvas
             socket.emit('wellcome', dbMsgs);
 
